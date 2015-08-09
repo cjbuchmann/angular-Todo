@@ -14,30 +14,37 @@
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/app.css"
   </head>
 
   <body>
     <div ng-controller='todoCtrl'>
-      <div class='col-md-12'>
-        <h2>Todos!</h2>
+      <div class='col-md-offset-4 col-md-5 well'>
+        <h2>Things to do! <span class='sm-header'>({{notCompleted().length}} left)</h2>
 
-        <ul ng-if='todos.length > 0'>
-          <li ng-repeat='todo in todos'>
-            <span>{{todo.description}}</span>
+        <div class='form-container'>
+          <form class='form-inline' ng-submit='createTodo()'>
+            <div class='form-group'>
+              <input type='text' class='form-control' ng-model='newTodo.description'>
+              <button class='btn btn-default' type='submit'>+ Todo</button>
+              <button class='btn btn-danger' type='button' ng-click='removeCompleted()'>
+                <span class='glyphicon glyphicon-trash'></span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <ul class='list-unstyled' ng-if='todos.length > 0'>
+          <li ng-repeat='todo in todos' class='todo'>
+            <label>
+              <input type='checkbox' ng-model='todo.done'/>
+              <span class={{todo.doneClass()}}>{{todo.description}}</span>
+            </label>
           </li>
         </ul>
 
         <div ng-if='todos.length == 0'>
           No todos. Click below to add one.
-        </div>
-
-        <div>
-          <form class='form-inline' ng-submit='createTodo()'>
-            <div class='form-group'>
-              <input type='text' class='form-control' ng-model='newTodo.description'>
-              <button class='btn btn-default' type='submit'>+ Todo</button>
-            </div>
-          </form>
         </div>
       </div>
     </div>

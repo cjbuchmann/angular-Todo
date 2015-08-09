@@ -1,0 +1,15 @@
+.sm-header{
+  font-size: 0.6em;
+}
+.todo{
+  padding:2px;
+}
+.todo:hover{
+  background-color:#6495ED;
+}
+.todo-done{
+  text-decoration: line-through;
+}
+.form-container{
+    margin-bottom:1em;
+}

@@ -1,12 +1,24 @@
+"use strict";
+
 app.controller('todoCtrl', ['$scope', 'Todo', function ($scope, Todo) {
     $scope.todos = [];
     $scope.newTodo = new Todo();
 
-    console.log('newTodo is', $scope.newTodo);
-
     $scope.createTodo = function(){
-      console.log('creating new todo!', $scope.newTodo);
       $scope.todos.push($scope.newTodo);
       $scope.newTodo = new Todo();
+    };
+
+    $scope.notCompleted = function(){
+      let filtered = $scope.todos.filter(function(todo){
+        return todo.done === false;
+      });
+
+      return filtered || [];
+    };
+
+    $scope.removeCompleted = function(){
+      let notCompleted = $scope.notCompleted();
+      $scope.todos = notCompleted;
     }
 }]);
