@@ -18,25 +18,27 @@
 
   <body>
     <div ng-controller='todoCtrl'>
-      Total Todos:{{todos.length}}
+      <div class='col-md-12'>
+        <h2>Todos!</h2>
 
-      <h2>Todos!</h2>
+        <ul ng-if='todos.length > 0'>
+          <li ng-repeat='todo in todos'>
+            <span>{{todo.description}}</span>
+          </li>
+        </ul>
 
-      <ul>
-        <li ng-repeat='todo in todos'>
-          <span>{{todo.description}}</span>
-        </li>
-      </ul>
+        <div ng-if='todos.length == 0'>
+          No todos. Click below to add one.
+        </div>
 
-      <div ng-if='todos.length == 0'>
-        No todos. Click below to add one.
-      </div>
-
-      <div>
-        <form ng-submit='createTodo()'>
-          <input type='text' ng-model='newTodo.description'>
-          <button class='btn btn-default' type='submit'>+ Todo</button>
-        </form>
+        <div>
+          <form class='form-inline' ng-submit='createTodo()'>
+            <div class='form-group'>
+              <input type='text' class='form-control' ng-model='newTodo.description'>
+              <button class='btn btn-default' type='submit'>+ Todo</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </body>
