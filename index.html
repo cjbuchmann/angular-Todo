@@ -3,8 +3,14 @@
 <html ng-app="todoApp">
   <head>
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js'></script>
+    <!-- APP CONFIG -->
     <script type='text/javascript' src='js/app/app.js'></script>
-    <script type='text/javascript' src='./js/app/todoController.js'></script>
+
+    <!-- FACTORIES -->
+    <script type='text/javascript' src='js/app/factories/todo.js'></script>
+
+    <!-- CONTROLLERS -->
+    <script type='text/javascript' src='./js/app/controllers/todoController.js'></script>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -12,7 +18,26 @@
 
   <body>
     <div ng-controller='todoCtrl'>
-      Total Todos:{{totalTodos}}
+      Total Todos:{{todos.length}}
+
+      <h2>Todos!</h2>
+
+      <ul>
+        <li ng-repeat='todo in todos'>
+          <span>{{todo.description}}</span>
+        </li>
+      </ul>
+
+      <div ng-if='todos.length == 0'>
+        No todos. Click below to add one.
+      </div>
+
+      <div>
+        <form ng-submit='createTodo()'>
+          <input type='text' ng-model='newTodo.description'>
+          <button class='btn btn-default' type='submit'>+ Todo</button>
+        </form>
+      </div>
     </div>
   </body>
 </html>
