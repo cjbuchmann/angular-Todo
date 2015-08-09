@@ -1,0 +1,18 @@
+<!doctype html>
+
+<html ng-app="todoApp">
+  <head>
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js'></script>
+    <script type='text/javascript' src='js/app/app.js'></script>
+    <script type='text/javascript' src='./js/app/todoController.js'></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  </head>
+
+  <body>
+    <div ng-controller='todoCtrl'>
+      Total Todos:{{totalTodos}}
+    </div>
+  </body>
+</html>
